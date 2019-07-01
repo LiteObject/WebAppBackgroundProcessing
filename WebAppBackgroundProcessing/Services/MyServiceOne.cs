@@ -11,8 +11,9 @@
 
     /// <summary>
     /// The my service.
+    /// https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/multi-container-microservice-net-applications/background-tasks-with-ihostedservice
     /// </summary>
-    public class MyService : IHostedService, IDisposable
+    public class MyServiceOne : IHostedService, IDisposable
     {
         /// <summary>
         /// The logger.
@@ -43,13 +44,13 @@
         /// <param name="appConfig">
         /// The app Config.
         /// </param>
-        public MyService(ILogger<MyService> logger, IOptions<AppConfig> appConfig)
+        public MyServiceOne(ILogger<MyServiceOne> logger, IOptions<AppConfig> appConfig)
         {
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
             this.appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
 
             this.serviceConfig = this.appConfig.Value.Services.OfType<ServiceConfig>()
-                .FirstOrDefault(s => s.ServiceName.Equals(nameof(MyService)));
+                .FirstOrDefault(s => s.ServiceName.Equals(nameof(MyServiceOne)));
 
             if (this.serviceConfig is null)
             {

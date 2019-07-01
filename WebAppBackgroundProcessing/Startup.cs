@@ -51,7 +51,8 @@
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // services.AddSingleton<IHostedService, MyService>();
-            services.AddHostedService<MyService>();
+            services.AddHostedService<MyServiceOne>();
+            services.AddHostedService<MyServiceTwo>();
         }
 
         /// <summary>
